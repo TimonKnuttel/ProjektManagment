@@ -2,30 +2,31 @@ package com.company;
 
 public class Aufgabe {
 
-    private Verantwortlicher verantwortlicher;
-    private int fertigstellung;
+    private Person person;
+    private int fertigstellungInProzent;
 
-    public Aufgabe(Verantwortlicher verantwortlicher) {
-        this.verantwortlicher = verantwortlicher;
+    public Aufgabe(Person person, int fertigstellung) {
+        this.person = person;
+        this.fertigstellungInProzent= fertigstellung;
     }
 
-    public Verantwortlicher getVerantwortlicher() {
-        return verantwortlicher;
+    public Person getVerantwortlicher() {
+        return person;
     }
 
-    public int getFertigstellung() {
-        return fertigstellung;
+    public int getFertigstellungInProzent() {
+        return fertigstellungInProzent;
     }
 
-    public void setFertigstellung(int fertigstellung) {
-        this.fertigstellung = fertigstellung;
+    public void setFertigstellungInProzent(int fertigstellungInProzent) {
+        this.fertigstellungInProzent = fertigstellungInProzent;
     }
 
     @Override
     public String toString() {
         return "Aufgabe{" +
-                "verantwortlicher=" + verantwortlicher +
-                ", fertigstellung=" + fertigstellung +
+                "Person=" + person +
+                ", fertigstellung=" + fertigstellungInProzent +
                 '}';
     }
 }
