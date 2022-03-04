@@ -18,9 +18,7 @@ public class Aufgabe {
         return fertigstellungInProzent;
     }
 
-    public void setFertigstellungInProzent(int fertigstellungInProzent) {
-        this.fertigstellungInProzent = fertigstellungInProzent;
-    }
+    public void setFertigstellungInProzent(int fertigstellungInProzent) {this.fertigstellungInProzent = fertigstellungInProzent;}
 
     @Override
     public String toString() {

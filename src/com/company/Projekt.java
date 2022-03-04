@@ -6,14 +6,13 @@ import java.util.List;
 public class Projekt {
 
     private int status;
-    private Aufgabe aufgabe;
-    private Person person;
-    private Person mitglieder;
-    List<Aufgabe>aufgabenList = new ArrayList<>();
+    private Projektleiter projektleiter;
+    private List<Mitarbeiter>maList = new ArrayList<>();
+    private List<Aufgabe>aufgabenList = new ArrayList<>();
 
-    public Projekt(int status, Person projektleiter) {
+    public Projekt(int status, Projektleiter projektleiter) {
         setStatus(status);
-        this.person = projektleiter;
+        this.projektleiter = projektleiter;
     }
 
 
@@ -21,9 +20,8 @@ public class Projekt {
     public String toString() {
         return "Projekt{" +
                 "status='" + status + '\'' +
-                ", aufgabe=" + aufgabe +
-                ", person=" + person +
-                ", mitglieder=" + mitglieder +
+                ", person=" + projektleiter +
+                ", mitglieder=" + maList.toString() +
                 '}';
     }
 
@@ -34,28 +32,34 @@ public class Projekt {
         }else throw new IllegalArgumentException("Liegt auserhalb von den Grenzen");
     }
 
-    public void setMitglieder(Person mitglieder) {
-        this.mitglieder = mitglieder;
-    }
-
-    public int getStatus() {
-        return status;
-    }
+    public int getStatus() {return status;}
 
     public List<Aufgabe> getAufgaben() {
         return aufgabenList;
     }
 
-    public Person getProjektleiter() {
-        return person;
+    public void addAufgabe(Aufgabe aufgabe){aufgabenList.add(aufgabe);}
+
+    public void addMitglieder(Mitarbeiter mitglied) {this.maList.add(mitglied);}
+
+    public Projektleiter getProjektleiter() {return projektleiter;}
+
+    public List<Mitarbeiter> getMA() {return maList;}
+
+    public List<Person> getAllePerosonen(){
+        List<Person>allePersonen = new ArrayList<>();
+        for (int i=0; i<maList.size();i++){
+            allePersonen.add(maList.get(i));
+        }
+        allePersonen.add(projektleiter);
+        return allePersonen;
     }
 
-    public Person getMitglieder() {
-        return mitglieder;
-    }
-
-
-    public void newAufgabe (Aufgabe aufgabe){
-        aufgabenList.add(aufgabe);
+    public double getDurschnittVonProgress (){
+        double durchschnitt=0;
+        for (int i=0; i<aufgabenList.size();i++){
+            durchschnitt+=getAufgaben().get(i).getFertigstellungInProzent();
+        }
+        return durchschnitt/aufgabenList.size();
     }
 }

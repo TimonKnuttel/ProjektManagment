@@ -10,5 +10,11 @@ public class Person {
         this.funktion = funktion;
     }
 
-
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", funktion='" + funktion + '\'' +
+                '}';
+    }
 }
